@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #5ebec4;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    width: 65%;
+    margin: 100px auto;
+    padding: 50px;
+    background-color: white;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-form > * {
+    margin: 15px 0px;
+}
+
+.container-form h2 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.container-form-label {
+    padding: 3px;
+    font-size: 20px;
+    width: 135px;
+    display: inline-block;
+}
+
+.container-form input {
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 3px;
+    margin: 0px 5px;
+}
+
+textarea {
+    resize: none;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 3px;
+    margin: 0px 5px;
+}
+
+#container-form-price {
+    width: 15%;
+}
+
+.container-form select, .container-form button, .container-date button, #container-date-type, #container-total-currency {
+    font-size: 20px;
+    padding: 3px;
+    font-weight: 300;
+    border-radius: 5px;
+    color: rgb(73, 73, 73);
+    background-color: white;
+    border: #5ebec4 1px solid;
+}
+
+.container-form button:hover, .container-date button:hover{
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #5ebec4;
+}
+
+.container-form button {
+    padding: 5px 20px;
+    margin: 0 auto;
+}
+
+.container-date {
+    margin: 15px 0px;
+    font-size: 20px;
+}
+
+.container-date input {
+    padding: 3px;
+    font-size: 20px;
+    margin: 0px 5px;
+}
+
+.container-table {
+    width: 100%;
+    text-align: left;
+    table-layout: fixed;
+    word-wrap: break-word;
+    border-collapse: collapse;
+    margin: 50px 0px;
+}
+
+td, th {
+    border-bottom: 1px #5ebec4 solid;
+    padding: 15px 7px;
+}
+
+.container-table tr th:first-child {
+    width: 12.5%;
+}
+
+.container-table tr th:nth-child(4) {
+    width: 10%;
+}  
+
+.container-table tr th:nth-child(5){
+    width: 16%;
+}

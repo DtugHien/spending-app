@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,600;1,100;1,300;1,600&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet"> 
+    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+    <title>Personal spending</title>
+</head>
+<body>
+    <div class="container">
+        <form class="container-form">
+            <h2>Personal spending App</h2>
+            <div>
+                <label class="container-form-label" for="container-form-name">Spend on</label>
+                <input type="text" id="container-form-name" required>
+                <select id="container-form-type">
+                    <option value="buy">Buy something</option>
+                    <option value="game">For game</option>
+                    <option value="football">For football</option>
+                    <option value="other">Other</option>
+                </select>
+                <label class="container-form-label" for="container-form-price">How much</label>
+                <input type="text" id="container-form-price" required>
+                <select id="container-form-currency">
+                    <option value="vnd">VND</option>
+                    <option value="usd">USD</option>
+                    <option value="euro">EURO</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div style="display: flex;">
+                <label class="container-form-label" for="container-form-detail">More detail</label>
+                <textarea id="container-form-detail" rows="4" cols="75"></textarea>
+            </div>
+            <button type="submit">Add</button>
+        </form>
+        <div class="container-date">
+            <strong>From</strong>
+            <input type="date" id="container-date-beginDate" />
+            <strong>To</strong>
+            <input type="date" id="container-date-lastDate" />
+            <select id="container-date-type">
+                <option value="all">All</option>
+                <option value="buy">Buy something</option>
+                <option value="game">For game</option>
+                <option value="football">For football</option>
+                <option value="other">Other</option>
+            </select>
+            <button style="padding-left: 10px; padding-right: 10px;" id="filter-button">Filter</button>
+            <span style="margin: 0px 5px; color: red; display: none;" id="date-warning">Last day must after first day</span>
+        </div>
+        <table class="container-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Spen on</th>
+                    <th>Detail</th>
+                    <th>Date</th>
+                    <th>How much</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if render.length != 0 %}
+                    {% for val in render %}
+                        <tr>
+                            <td>{{types[val['type']]}}</td>
+                            <td>{{val['spendOn']}}</td>
+                            <td>{{val['detail']}}</td>
+                            <td>{{val['date']}}</td>
+                            <td>{{val['cost']}} {{val['currency'].upper()}} <a title="{{val['spendOn']}}" style="float: right; cursor: pointer; color: red;" id="{{val['id']}}" onclick="deleteElement(this.id)">X</a></td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+        <div style="float: right; width: max-content; font-size: 18px; max-width: 100%; word-wrap: break-word;">
+            <!-- <select id="container-total-currency" style="float: left; padding: 0px; font-size: 18px;
+            margin-right: 10px;">
+                <option value="all">All</option>
+                <option value="vnd">VND</option>
+                <option value="usd">USD</option>
+                <option value="euro">Euro</option>
+                <option value="other">Other</option>
+            </select> -->
+            Total:
+            <strong>{{total_price}}</strong>
+        </div>
+    </div>
+</body>
+<script>
+    const deleteElement = (id) => {
+        console.log(id)
+        $.ajax({
+            url: '/delete',
+            contentType: 'application/json;charset=UTF-8',
+            data: JSON.stringify({
+                id
+            }),
+            type: 'DELETE',
+            success: respone => location.reload(),
+            error: error => console.log(error),
+        })
+    }
+</script>
+</html>

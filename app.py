@@ -57,9 +57,10 @@ def index():
     # data = [{**item.to_dict(), **{"id": item.id}} for item in data]
     # if (type_filter != "all"):
     #     data = [item for item in data if item['type'] == type_filter]
-    total_price = sum([int(item['cost'].replace(",", ""))
-                      for item in data])
-    return render_template('index.html', render=data, types=types, total_price=f"{int(total_price):,}")
+    # total_price = sum([int(item['cost'].replace(",", ""))
+    #                   for item in data])
+    # return render_template('index.html', render=data, types=types, total_price=f"{int(total_price):,}")
+    return "Hello World"
 
 
 # @app.route('/add', methods=['POST'])

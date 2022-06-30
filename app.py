@@ -12,6 +12,7 @@ from sqlalchemy import null
 
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = "Content-Type"
 
 # Use a service account
 # load_dotenv()

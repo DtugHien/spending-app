@@ -49,7 +49,6 @@ types = {
 @cross_origin(origin='*')
 def index():
     global type_filter, begin_date, last_date
-    data = []
     data = db.collection("spending").where(
         "time_stamp", ">=", begin_date).where("time_stamp", "<", last_date).stream()
     data = [{**item.to_dict(), **{"id": item.id}} for item in data]

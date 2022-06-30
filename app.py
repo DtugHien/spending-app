@@ -8,8 +8,6 @@ from firebase_admin import firestore
 from dotenv import load_dotenv
 import os
 
-from sqlalchemy import null
-
 app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = "Content-Type"

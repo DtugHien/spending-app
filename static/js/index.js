@@ -47,7 +47,7 @@ $(document).ready(() => {
     })
 
     $('.container-form').submit(async (e) => {
-        const time_stamp = Date.now() + 86400000
+        const time_stamp = Date.now()
         e.preventDefault();
         await $.ajax({
             url: '/add',
